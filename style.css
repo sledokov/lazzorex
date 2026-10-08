@@ -1,0 +1,59 @@
+:root {
+  --orange: #ffa500;
+  --white: #ffffff;
+  --text: #1f2933;
+  --gray: #6b7280;
+  --footer-bg: #e5e7eb;
+}
+
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--white);
+  color: var(--text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Шапка */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 32px;
+  background: var(--white);
+  border-bottom: 4px solid var(--orange);
+}
+
+.header__brand { display: flex; align-items: center; gap: 16px; }
+.header__logo { height: 64px; width: auto; display: block; }
+.header__company { font-size: 22px; font-weight: 700; }
+.header__sub { font-size: 14px; font-weight: 600; color: var(--orange); letter-spacing: 0.5px; }
+
+.header__user { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+.header__avatar { height: 44px; width: 44px; object-fit: contain; }
+.header__name { font-size: 16px; font-weight: 600; }
+.header__position { font-size: 13px; color: var(--gray); }
+
+/* Контент */
+.main { flex: 1; padding: 32px; }
+
+/* Подвал */
+.footer {
+  padding: 16px 32px;
+  background: var(--footer-bg);
+  color: var(--gray);
+  font-size: 14px;
+}
+.footer a { color: inherit; text-decoration: none; }
+.footer a:hover { color: var(--orange); text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .header { flex-wrap: wrap; padding: 12px 16px; }
+  .header__logo { height: 48px; }
+}

@@ -1,0 +1,52 @@
+:root { --orange: #ffa500; --text: #1f2933; --gray: #6b7280; }
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { font-family: "Segoe UI", Arial, sans-serif; color: var(--text); background: #2b2b2b; overflow: hidden; }
+
+/* Фон: плавная смена fon1 → fon2 → fon3 */
+.bg { position: fixed; inset: 0; }
+.bg::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, .25); }
+.bg span {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; animation: fade 18s infinite;
+}
+.bg span:nth-child(2) { animation-delay: 6s; }
+.bg span:nth-child(3) { animation-delay: 12s; }
+@keyframes fade {
+  0% { opacity: 0; } 8% { opacity: 1; } 33% { opacity: 1; } 41% { opacity: 0; } 100% { opacity: 0; }
+}
+
+/* Правая панель на всю высоту */
+.panel {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(440px, 100%);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 48px 44px;
+  background: #fff;
+  border-left: 4px solid var(--orange);
+  box-shadow: -8px 0 24px rgba(0, 0, 0, .25);
+  overflow-y: auto;
+}
+.panel__logo { width: 120px; height: auto; align-self: center; margin-bottom: 16px; }
+h1 { margin: 0 0 24px; font-size: 24px; text-align: center; }
+
+label { display: block; margin: 16px 0 6px; font-size: 14px; font-weight: 600; }
+input[type="text"], input[type="password"] {
+  width: 100%; padding: 11px 12px; font-size: 15px;
+  border: 1px solid #d1d5db; border-radius: 4px; background: #fff;
+}
+input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255, 165, 0, .25); }
+
+button {
+  width: 100%; margin-top: 28px; padding: 12px;
+  font-size: 15px; font-weight: 700; color: var(--text);
+  background: var(--orange); border: 0; border-radius: 4px; cursor: pointer;
+}
+button:hover { filter: brightness(.95); }
+
+.error {
+  margin-bottom: 4px; padding: 10px 12px; font-size: 14px;
+  color: #991b1b; background: #fef2f2; border-left: 4px solid #dc2626;
+}
